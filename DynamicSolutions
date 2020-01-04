@@ -1,0 +1,515 @@
+package algoritms;
+
+/**
+ *
+ * @author sheikhuser
+ */
+import java.lang.*;
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Strings {
+    
+    public static void main(String args[])
+    {
+    String s ="hey";
+    
+    int i;
+    char a[]= s.toCharArray();
+   
+   
+        String str = "GeeksForGeeks"; 
+  
+        // Creating array and Storing the array 
+        // returned by toCharArray() 
+        char[] ch = str.toCharArray(); 
+  
+        // Printing array 
+        StringBuffer sh = new StringBuffer("helll");
+        //Roration at 3
+       System.out.println((sh.reverse()));
+      String aah= sh.toString() ;
+      char e[]=aah.toCharArray();
+      
+     for(char ca: e){
+         System.out.println(ca);
+     }
+        
+    HashMap<String,Integer> strcount = new HashMap<>();
+    int value=1;
+
+    String keystring = new String(e);
+    
+    System.out.println("string is "+ keystring);
+    for (int m=0;m<keystring.length();m++){
+        
+        char realkey = keystring.charAt(m);
+        String mykey = String.valueOf(realkey);
+        System.out.println("char in a string is " + mykey);
+        if(strcount.containsKey(mykey)){
+            boolean t=strcount.containsKey(mykey);
+            System.out.println(t);
+           value = strcount.get(mykey);
+            strcount.put(mykey,value+1);
+        }
+        else{
+    strcount.put(mykey, 1);
+        }
+           
+            }
+     
+    char test = keystring.charAt(1);
+    String teststringchar = String.valueOf(test);
+    
+    System.out.println(strcount.get(teststringchar));
+    
+    
+    
+     
+    } 
+}
+
+
+
+
+
+//DYNAMIC PROGRAM
+
+SUM TO N WITH REPETTITIOTN
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package algoritms;
+
+/**
+ *
+ * @author sheikhuser
+ */
+public class Dynamic {
+   
+    public static int dynamic(int d[][], int n, int m){
+       int i = 0,k;
+        
+        for(k = n;k >= m;k--)
+        {
+            System.out.println("In k loop");
+                                 
+                d[i][k]=d[i][k+1];
+                System.out.println(d[i][k]);
+                if(i-k>=0){
+                    d[i][k]=(d[i][k]+d[i-k][k]);
+                    System.out.println(d[i][k]);
+                }
+                        System.out.println("\n");
+             
+        }
+     return(d[n][m]);   
+    }
+    
+    
+    public static int sumn(int a[], int sum ){
+        
+       int count[] = new int[sum+1];
+       count[0]=1;
+       int i;
+     
+      
+       
+       System.out.println(count.length);
+       
+       for(i=0;i<count.length;i++){
+           
+        System.out.println("value of i in is"+ i);
+       for(int j=0;j<a.length;j++){
+           if(i>=a[j]){
+              int left=i-a[j];
+              System.out.println(left+"value of i is"+ i);
+               count[i]+= count[left];
+           }   
+       }
+       
+       }
+       
+   
+       for(i=0;i<count.length;i++)
+           {
+               System.out.println(count[i]);
+           }
+              return(count[sum]);
+              
+    
+    
+    
+     /*   
+        public static int sumton(int a[]){
+            
+            
+        }
+        
+       */ 
+        
+        
+        
+        
+        /*
+        
+        
+        for (int k = n; k >= m; k--) { 
+       
+            // i is for sum 
+            for (int i = 0; i <= n; i++) { 
+       
+                // initializing dp[i][k] to number 
+                // ways to get sum using numbers 
+                // greater than or equal k+1
+                
+                dp[i][k] = dp[i][k + 1]; 
+                
+       System.out.print(dp[i][k]+ "("+i+" "+k+")");
+                // if i > k 
+                if (i - k >= 0) 
+                    dp[i][k] = (dp[i][k] + dp[i - k][k]);
+                System.out.print(dp[i][k]+"("+i+" "+k+")");
+                //dp[i-k][k]--> i--> is the sume, k--> is the numnber,
+                //i-k gives the left over sum to be calculated using the  
+            } 
+            System.out.println("\n");
+        
+    }
+        return(dp[n][m]);
+                */
+       
+       
+    }    
+       
+        
+    
+               
+    
+        
+    public static void main(String args[]){
+      /*  
+        int n=3;
+        int m=1;
+         int d[][]=new int[n+2][n+2];
+         d[0][n+1]=1;
+         for(int j=0;j<n+2;j++)
+             for(int i=0;i<n+2;i++){
+                 System.out.println(d[i][j]+" n value us "+ n+m);
+             }
+         
+         int c = Dynamic.dynamic(d, n, m);
+         System.out.println(c);
+         */
+      /*   
+    int a[]= new int[3];
+    a[0]=1;
+    a[1]=3;
+    a[2]=4;
+
+    int sum=5;
+
+    int ans= sumton(a,sum);
+       */
+         int a[] = new int [4];
+         a[0]=12;
+         a[1]=3;
+         a[2]=1;
+         a[3]=9;
+      int c = sumn(a,14);
+        System.out.println("ans is"+c);
+        
+    }
+}
+
+
+
+SUM OF PAIRS TO N:
+
+
+stair case problem:
+
+it is a classic fibonacci problem
+
+as to reach the the 4th stair case 
+we add no of ways to reach the stair case 3 and stair case 2
+
+there fore f(n)= t[i]= t[i-1]+t[i-2]
+
+
+SIMPLE LOGIC REMEMBER FOR DYNAMIC PROGRAMMING
+
+FIND A RECURSIVE SOLUTION:
+
+IN ORDER TO FIND A NUMBER OF WAYS :
+
+WE NEEED OT KNOW HOW MANY LEAFS AND BASE CASES 
+
+AS THE LEAFS REPRESENT HOW MANY WAYS WE CAN REACH THE ROOT TO LEAF
+
+STAIR CASE 
+COIN CHANGE
+SUM
+
+IF WE OBSERVE EVERY ONE HAS A SAME PATTERN THAT IS SUBTRACTING THE SUM
+ WITH SOME NUMBER AND GETTING TO CONCLUSIONS THROUGH IT'
+
+
+//printing all subsets 
+
+you take all the numbers 
+suppose four numbers in the set
+then we take all 0 to 16 numbers and
+ run a loop of 4 on 16 number to find the bits set to 1 in a
+number, so that we can print the number
+
+
+
+void printPowerSet(char *set, int set_size) 
+{ 
+    /*set_size of power set of a set with set_size 
+    n is (2**n -1)*/
+    unsigned int pow_set_size = pow(2, set_size); 
+    int counter, j; 
+  
+    /*Run from counter 000..0 to 111..1*/
+    for(counter = 0; counter < pow_set_size; counter++) 
+    { 
+    for(j = 0; j < set_size; j++) 
+    { 
+        /* Check if jth bit in the counter is set 
+            If set then print jth element from set */
+        if(counter & (1 << j)) 
+            cout << set[j]; 
+    } 
+    cout << endl; 
+    } 
+} 
+}; 
+
+ 			//code for without repetttion
+// dp for finding the total number of ways getting a coin change
+
+eex 
+
+s(i) -> 1 2 3
+
+table(n->5)(j)  0 1 2 3 4 5
+
+we fix the pointer at i and start from j=s[i] till sum value(here it is 5)
+
+public static int count( int S[], int m, int n ) 
+{ 
+    // table[i] will be storing the number of solutions for 
+    // value i. We need n+1 rows as the table is constructed 
+    // in bottom up manner using the base case (n = 0) 
+    int table[]=new int[n+1]; 
+  
+    // Base case (If given value is 0) 
+    table[0] = 1; 
+  
+    // Pick all coins one by one and update the table[] values 
+    // after the index greater than or equal to the value of the 
+    // picked coin 
+    for(int i=0; i<m; i++) 
+        for(int j=S[i]; j<=n; j++) 
+            table[j] += table[j-S[i]]; 
+  
+    return table[n]; 
+} 
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package algoritms;
+
+/**
+ *
+ * @author sheikhuser
+ */
+public class Dynamic {
+   
+    public static int withoutrepit(int a[], int sum){
+        
+        int table[] = new int [sum+1];
+        
+      table[0]=1;
+        for(int i=0;i<a.length;i++){
+            //here i is used to itterate the numbers not the sum(count array)
+           // so we find 
+          //as suppose
+            //a[]== 1 2 3 
+            //count= indes --> 0 1 2 3 4 5(for sum5)
+            //we first check one being used in sum for 0 1 2 3 4 5
+            // so we have to start from 1 in order to check one being used in these sums
+            int x= a[i];
+            for(int j=x;j<sum;j++){
+                table[j]= table[j] + table[j-a[i]];
+                       }
+        }
+        
+      return(table[sum-1]);  
+    }
+    
+    
+    
+    public static int dynamic(int d[][], int n, int m){
+       int i = 0,k;
+        
+        for(k = n;k >= m;k--)
+        {
+            System.out.println("In k loop");
+                                 
+                d[i][k]=d[i][k+1];
+                System.out.println(d[i][k]);
+                if(i-k>=0){
+                    d[i][k]=(d[i][k]+d[i-k][k]);
+                    System.out.println(d[i][k]);
+                }
+                        System.out.println("\n");
+             
+        }
+     return(d[n][m]);   
+    }
+    
+    
+    public static int sumn(int a[], int sum ){
+        
+       int count[] = new int[sum+1];
+       count[0]=1;
+       int i;
+     
+      
+       
+       System.out.println(count.length);
+       
+       for(i=0;i<count.length;i++){
+           
+        System.out.println("value of i in is"+ i);
+       for(int j=0;j<a.length;j++){
+           if(i>=a[j]){
+              int left=i-a[j];
+              System.out.println("left is"+left+"for i"+i+"and a[j]"+a[j]);
+             if(left>0){
+            left=left-1;
+             }
+            if(i==1&&left==0){
+              System.out.println(left+"value of i is"+ i);
+               count[i]+= count[left];
+            }
+            if(left>=0){
+                System.out.println(left+"value of i is"+ i);
+               count[i]+= count[left];
+            }
+           }   
+       }
+       
+       }
+       
+   
+       for(i=0;i<count.length;i++)
+           {
+               System.out.println(count[i]);
+           }
+              return(count[sum]);
+                
+    
+    
+     /*   
+        public static int sumton(int a[]){
+            
+            
+        }
+        
+       */ 
+        
+        
+        
+        
+        /*
+        
+        
+        for (int k = n; k >= m; k--) { 
+       
+            // i is for sum 
+            for (int i = 0; i <= n; i++) { 
+       
+                // initializing dp[i][k] to number 
+                // ways to get sum using numbers 
+                // greater than or equal k+1
+                
+                dp[i][k] = dp[i][k + 1]; 
+                
+       System.out.print(dp[i][k]+ "("+i+" "+k+")");
+                // if i > k 
+                if (i - k >= 0) 
+                    dp[i][k] = (dp[i][k] + dp[i - k][k]);
+                System.out.print(dp[i][k]+"("+i+" "+k+")");
+                //dp[i-k][k]--> i--> is the sume, k--> is the numnber,
+                //i-k gives the left over sum to be calculated using the  
+            } 
+            System.out.println("\n");
+        
+    }
+        return(dp[n][m]);
+                */
+       
+       
+    }    
+       
+        
+    
+               
+    
+        
+    public static void main(String args[]){
+      /*  
+        int n=3;
+        int m=1;
+         int d[][]=new int[n+2][n+2];
+         d[0][n+1]=1;
+         for(int j=0;j<n+2;j++)
+             for(int i=0;i<n+2;i++){
+                 System.out.println(d[i][j]+" n value us "+ n+m);
+             }
+         
+         int c = Dynamic.dynamic(d, n, m);
+         System.out.println(c);
+         */
+      /*   
+    int a[]= new int[3];
+    a[0]=1;
+    a[1]=3;
+    a[2]=4;
+
+    int sum=5;
+
+    int ans= sumton(a,sum);
+       */
+         int a[] = new int [3];
+         a[0]=1;
+         a[1]=2;
+         a[2]=3;
+        
+     /* int c = sumn(a,6);
+        System.out.println("ans is"+c);*/
+         
+        int r= withoutrepit(a,5);
+        System.out.println(r+1);
+    }
+               
+   
+    
+    
+
+}
+
+
